@@ -1,0 +1,111 @@
+name: SR_ITM_GAN
+use_tb_logger: true
+model: srgan
+distortion: sr
+scale: 1
+gpu_ids: [2]
+log_dir: ../tb_logger
+save_opt_dir: ../option_save
+#### datasets
+datasets:
+  train:
+    name: DIV2K
+    mode: LQGT
+    dataroot_GT: ../dataset/hdr.lmdb
+    dataroot_LQ: ../dataset/sdr.lmdb
+
+    use_shuffle: true
+    n_workers: 6  # per GPU
+    batch_size: 26
+    GT_size: 128
+    use_flip: true
+    use_rot: true
+    color: RGB
+  val:
+    name: val_set14
+    mode: LQGT
+    dataroot_GT: ./dataset/hdr_eval.lmdb
+    dataroot_LQ: ./dataset/sdr_eval.lmdb
+
+#### network structures
+network_G:
+  which_model_G: RRDBNet
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 23
+  cardinality: 2
+  base_width: 64
+  widen_factor: 4
+network_D:
+  which_model_D: vgg19_bn
+  in_nc: 3
+  nf: 64
+network_F:
+  which_model_F: vgg19 # vgg16 for perceptual
+
+#### path
+path:
+  pretrain_model_G: ~
+  pretrain_model_C: ~
+  strict_load: true
+  resume_state: ~
+
+
+
+
+
+
+#### training settings: learning rate scheme, loss
+train:
+  lr_G: !!float 1e-4
+  weight_decay_G: 0
+  beta1_G: 0.9
+  beta2_G: 0.99
+
+  lr_D: !!float 1e-4
+  weight_decay_D: 0
+  beta1_D: 0.9
+  beta2_D: 0.99
+
+  lr_C: !!float 1e-5
+  weight_decay_C: 0
+#  beta1_C: 0.9
+#  beta2_C: 0.99
+
+  lr_scheme: MultiStepLR
+
+  niter: 400000
+  warmup_iter: -1  # no warm up
+  lr_steps: [32000, 45000, 55000, 60000]
+  lr_gamma: 0.8
+
+
+
+  pixel_criterion: l1
+  pixel_weight:  0.07
+  Color_criterion: l1
+  Color_weight: 1 #remove  # 0.07
+  feature_criterion: l1
+  feature_weight: -10 #0.7  #0.3
+#  STYLE_WEIGHT: !!float 0.9 #1e6 for perceptual
+#  CONTENT_WEIGHT: 0.8
+#  TV_WEIGHT: !!float 2e-2
+
+  # parser.add_argument('--STYLE_WEIGHT', type=float, default=1e6, help='STYLE_WEIGHT')
+  # parser.add_argument('--CONTENT_WEIGHT', type=float, default=1e0, help='CONTENT_WEIGHT')
+  # parser.add_argument('--TV_WEIGHT', type=float, default=2e-2, help='TV_WEIGHT')
+
+  gan_type: ragan  # gan | ragan
+  gan_weight: !!float 5e-3
+
+  D_update_ratio: 1
+  D_init_iters: 0
+
+  manual_seed: 10
+  val_freq: !!float 1e3 #3e3
+
+#### logger
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 1e3

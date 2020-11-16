@@ -1,0 +1,36 @@
+name: SR_ITM_GAN
+suffix: ~  # add suffix to saved images
+model: srgan
+distortion: sr
+scale: 2
+crop_border: ~  # crop border when evaluation. If None(~), crop the scale pixels
+gpu_ids: [0]
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: SR_ITM_Dataset
+    mode: LQGT
+    dataroot_GT: ../dataset/hdrx2
+    dataroot_LQ: ../dataset/hdrx4
+
+
+#### network structures
+network_G:
+  which_model_G: RRDBNet
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 23
+  cardinality: 2
+  base_width: 64
+  widen_factor: 4
+  upscale: 2
+
+#### path
+path:
+    pretrain_model_G: ../pretrain/pre_train_G.pth
+
+
+
+
+
