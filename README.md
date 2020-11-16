@@ -4,6 +4,17 @@ This repository is an official PyTorch implementation of the paper "SR-ITM-GAN: 
 Huimin Zeng, Xinliang Zhang, Yubo Wang and Zhibin Yu
 
 ## Introduction
+<p align="center">
+<img src="./img/archi.png" width="80%"/>
+</p>
+Architecture of our generator.
+<p></p>
+<p align="center">
+<img src="./img/all.png" width="50%"/>
+Basic results.
+</p>
+Generator architecture.
+<p></p>
 ## Environments
 * CUDA 9.0 & cuDNN 7.0
 * Python 3.6
@@ -42,7 +53,7 @@ SR-ITM-GAN
 └── tb_logger
 ```
 ## Data Preparation
-* Download our dataset here [Google Drive](), [Baidu Cloud]()
+* Download our dataset here [Google Drive](https://drive.google.com/drive/folders/1fuiBLHvYz9wH_TbtdSuA7szClLu4v_-v?usp=sharing), [Baidu Cloud](https://pan.baidu.com/s/1KVK1_r3Z5GQC6AtOcOEUlA)(extract code: ue6f)
 * Extract images with following FFMPEG(datasets are saved as .mp4 format for convenience):
 ```
 ffmpeg 
@@ -65,7 +76,15 @@ python test.py -opt /options/test/test.yml
 ## Citation
 If you find the resource useful, please cite the following
 ```
-@ARTICLE{9212411,  author={H. {Zeng} and X. {Zhang} and Z. {Yu} and Y. {Wang}},  journal={IEEE Access},   title={SR-ITM-GAN: Learning 4K UHD HDR With a Generative Adversarial Network},   year={2020},  volume={8},  number={},  pages={182815-182827},  doi={10.1109/ACCESS.2020.3028584}}
+@ARTICLE{9212411,
+  author={H. {Zeng} and X. {Zhang} and Z. {Yu} and Y. {Wang}},
+  journal={IEEE Access}, 
+  title={SR-ITM-GAN: Learning 4K UHD HDR With a Generative Adversarial Network}, 
+  year={2020},
+  volume={8},
+  number={},
+  pages={182815-182827},
+  doi={10.1109/ACCESS.2020.3028584}}
 ```
 ## Contact
 Please contact ```cenghuimin@stu.ouc.edu.cn``` if there's any problem.
