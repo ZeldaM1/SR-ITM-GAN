@@ -51,15 +51,15 @@ SR-ITM-GAN
         ├── training_state
         ├── val_images
         └── training.log
-├── option
 └── tb_logger
 ```
 ## Data Preparation
 * Download our dataset here [Google Drive](https://drive.google.com/drive/folders/1fuiBLHvYz9wH_TbtdSuA7szClLu4v_-v?usp=sharing), [Baidu Cloud](https://pan.baidu.com/s/1KVK1_r3Z5GQC6AtOcOEUlA)(extract code: ue6f)
 * Extract images with following FFMPEG(datasets are saved as .mp4 format for convenience):
 ```
-ffmpeg 
+ffmpeg -i /path/to/video/dataset.mp4 -q:v 2  /path/to/extract/location/%d.png
 ```
+* Pack RGB dataset into lmdb format for accelerating.
 ```
 python ./data_scripts/create_lmdb.py
 ```
@@ -77,6 +77,7 @@ python test.py -opt ./options/test/test.yml
 ```
 ## Citation
 If you find the Repository useful, please give us a star.:blush:
+
 Using our dataset or code, please cite the following:
 ```
 @ARTICLE{9212411,
@@ -90,5 +91,4 @@ Using our dataset or code, please cite the following:
   doi={10.1109/ACCESS.2020.3028584}}
 ```
 ## Contact
-Be free to contact ```cenghuimin@stu.ouc.edu.cn``` if there's any problem.
-## We will realease the code soon
+Feel free to contact ```cenghuimin@stu.ouc.edu.cn``` if there's any problem.
