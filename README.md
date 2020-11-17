@@ -9,13 +9,15 @@ Huimin Zeng, Xinliang Zhang, Yubo Wang and Zhibin Yu
 </p>
 Architecture of our generator.
 <p></p>
+
 <p align="center">
-<img src="./img/all.png" width="50%"/>
-Basic results.
+<img src="./img/all.png" width="80%"/>
 </p>
-Generator architecture.
+From top to bottom, we display basic results of Pix2Pix, CycleGAN, Deep-SR-ITM, ESRGAN, our SR-ITM-GAN and HDR GT.
 <p></p>
+
 ## Environments
+
 * CUDA 9.0 & cuDNN 7.0
 * Python 3.6
 * Pytorch >= 1.1
@@ -59,22 +61,23 @@ SR-ITM-GAN
 ffmpeg 
 ```
 ```
-python /data_scripts/create_lmdb.py
+python ./data_scripts/create_lmdb.py
 ```
 ## Train
 ```
 # Step 1:  modify your training datasets in /options/train/train.yml
 # Step 2: run the script:
 cd codes
-python train.py -opt /options/train/train.yml
+python train.py -opt ./options/train/train.yml
 ```
 ## Test
 ```
 cd codes
-python test.py -opt /options/test/test.yml
+python test.py -opt ./options/test/test.yml
 ```
 ## Citation
-If you find the resource useful, please cite the following
+If you find the Repository useful, please give us a star.:blush:
+Using our dataset or code, please cite the following:
 ```
 @ARTICLE{9212411,
   author={H. {Zeng} and X. {Zhang} and Z. {Yu} and Y. {Wang}},
@@ -87,5 +90,5 @@ If you find the resource useful, please cite the following
   doi={10.1109/ACCESS.2020.3028584}}
 ```
 ## Contact
-Please contact ```cenghuimin@stu.ouc.edu.cn``` if there's any problem.
+Be free to contact ```cenghuimin@stu.ouc.edu.cn``` if there's any problem.
 ## We will realease the code soon
