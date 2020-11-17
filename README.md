@@ -1,5 +1,7 @@
 # SR-ITM-GAN
 This repository is an official PyTorch implementation of the paper "SR-ITM-GAN: Learning 4k UHD HDR with a Generative Adversarial Network" [[Paper]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9212411) [[Axiv]]()
+
+The uncompressed pdf version could be found [here](https://drive.google.com/drive/folders/1fuiBLHvYz9wH_TbtdSuA7szClLu4v_-v?usp=sharing)
 ## Authors
 Huimin Zeng, Xinliang Zhang, Yubo Wang and Zhibin Yu
 
@@ -11,7 +13,7 @@ Architecture of our generator.
 <p></p>
 
 <p align="center">
-<img src="./img/all.png" width="80%"/>
+<img src="./img/all.png" width="90%"/>
 </p>
 From top to bottom, we display basic results of Pix2Pix, CycleGAN, Deep-SR-ITM, ESRGAN, our SR-ITM-GAN and HDR GT.
 <p></p>
